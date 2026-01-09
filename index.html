@@ -3,7 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <title>ソースコード表示（DTD風・黒背景）</title>
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+  background-color: #000;  /* 背景黒 */
+  color: #fff;             /* 文字白 */
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 20px;
+}
+
+/* 英語 */
+.english {
+  font-family: Helvetica, Arial, sans-serif; /* 1999年風英語 */
+  color: #fff;
+}
+
+/* 日本語 */
+.japanese {
+  font-family: "MS PGothic", "MS Gothic", Osaka; /* 1999年風日本語 */
+  color: #fff;
+}
+
+/* コメント */
+.comment {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #00ff00; /* 緑でコメントっぽく */
+}
+
+/* コードブロック */
+pre {
+  background-color: #000;
+  color: #fff;
+  white-space: pre;
+  overflow-x: auto;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* GitHubリンク */
+.github-link a {
+  color: #00aaff;
+  text-decoration: underline;
+}
+
+.github-link a:hover {
+  color: #55ccff;
+}
+</style>
 </head>
 <body>
 
@@ -30,9 +76,14 @@ async function loadCode() {
       if (!res.ok) throw new Error('読み込み失敗: ' + url);
       let code = await res.text();
 
-      // コメントも含めて英語/日本語判定して <span> で分ける
-      code = code.replace(/([A-Za-z0-9_\/\-\+\=\(\)\[\]\{\};'"<>\.])/g, '<span class="english">$1</span>');
-      code = code.replace(/([^\x00-\x7F])/g, '<span class="japanese">$1</span>');
+      // コメントを先に処理（// や /* */）
+      code = code.replace(/(\/\/.*?$|\/\*[\s\S]*?\*\/)/gm, '<span class="comment">$1</span>');
+
+      // 英字・記号
+      code = code.replace(/([A-Za-z0-9_\/\-\+\=\(\)\[\]\{\};'"<>\.]+)/g, '<span class="english">$1</span>');
+
+      // 日本語（全角文字）
+      code = code.replace(/([^\x00-\x7F]+)/g, '<span class="japanese">$1</span>');
 
       combinedCode += code + '\n';
     } catch (e) {
@@ -45,5 +96,6 @@ async function loadCode() {
 
 loadCode();
 </script>
+
 </body>
 </html>
