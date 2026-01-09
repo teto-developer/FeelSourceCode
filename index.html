@@ -2,61 +2,55 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Suwakkoitiba_Sourcecode</title>
+<title>ソースコード表示（1999年風）</title>
 <style>
+/* ページ全体 */
 body {
   background-color: #000;  /* 背景黒 */
   color: #fff;             /* 文字白 */
+  font-family: Helvetica, Arial, sans-serif, "MS PGothic", "MS Gothic", Osaka;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.3;
   margin: 20px;
 }
 
-/* 英語 */
-.english {
-  font-family: Helvetica, Arial, sans-serif; /* 1999年風英語 */
-  color: #fff;
-}
-
-/* 日本語 */
-.japanese {
-  font-family: "MS PGothic", "MS Gothic", Osaka; /* 1999年風日本語 */
-  color: #fff;
-}
-
-/* コメント */
-.comment {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #00ff00; /* 緑でコメントっぽく */
-}
-
-/* コードブロック */
+/* コードブロック（1999年風） */
 pre {
-  background-color: #000;
+  background-color: #000; 
   color: #fff;
+  font-family: "Courier New", Courier, monospace, "MS Gothic", Osaka; /* 英数字はCourier、日本語もMS Gothic系 */
+  font-size: 14px;
+  line-height: 1.3;
   white-space: pre;
   overflow-x: auto;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 0; /* 当時は角丸なし */
+  border: none;
 }
 
 /* GitHubリンク */
+.github-link {
+  margin-top: 20px;
+}
+
 .github-link a {
-  color: #00aaff;
+  color: #00aaff;       /* リンク青 */
   text-decoration: underline;
 }
 
 .github-link a:hover {
-  color: #55ccff;
+  color: #55ccff;       /* ホバー水色 */
 }
 </style>
 </head>
 <body>
 
+<!-- ソースコード表示 -->
 <div>
   <pre id="code-block">読み込み中…</pre>
 </div>
 
+<!-- GitHub リンク -->
 <div class="github-link">
   <a href="https://github.com/Ryouse1/Suwakkoitiba" target="_blank">ソースコード</a>
 </div>
@@ -74,24 +68,16 @@ async function loadCode() {
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error('読み込み失敗: ' + url);
-      let code = await res.text();
+      const code = await res.text();
 
-      // コメントを先に処理（// や /* */）
-      code = code.replace(/(\/\/.*?$|\/\*[\s\S]*?\*\/)/gm, '<span class="comment">$1</span>');
-
-      // 英字・記号
-      code = code.replace(/([A-Za-z0-9_\/\-\+\=\(\)\[\]\{\};'"<>\.]+)/g, '<span class="english">$1</span>');
-
-      // 日本語（全角文字）
-      code = code.replace(/([^\x00-\x7F]+)/g, '<span class="japanese">$1</span>');
-
+      // 生のコードをそのまま表示（固定CSS・1999年風）
       combinedCode += code + '\n';
     } catch (e) {
       combinedCode += '読み込みエラー: ' + e.message + '\n';
     }
   }
 
-  document.getElementById('code-block').innerHTML = combinedCode;
+  document.getElementById('code-block').textContent = combinedCode;
 }
 
 loadCode();
