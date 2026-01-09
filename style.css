@@ -1,36 +1,35 @@
+/* ページ全体 */
 body {
-  background-color: #000;
-  color: #fff;
-  font-family: monospace;
-  padding: 20px;
-  line-height: 1.5;
+  background-color: #fff;                   /* 背景白 */
+  color: #000;                              /* 文字黒 */
+  font-family: Helvetica, Arial, sans-serif;/* DTD風フォント */
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 20px;
 }
 
+/* コードブロック */
 pre {
-  background-color: #000;
-  color: #fff;
-  padding: 10px;
-  border: none;
+  background-color: #fff;  /* 背景白 */
+  color: #000;             /* 文字黒 */
+  font-family: monospace;  /* タグ・コードはモノスペース */
+  font-size: 12px;
   white-space: pre;
   overflow-x: auto;
 }
 
+/* コメント風 */
 .comment {
-  color: #fff;
+  color: #000;
   margin-bottom: 5px;
 }
 
-/* GitHubリンク用 */
-.github-link {
-  margin-top: 20px;
-}
-
+/* GitHubリンク */
 .github-link a {
-  color: #fff;
+  color: #0000EE;         /* リンク青 */
   text-decoration: underline;
-  font-weight: bold;
 }
 
 .github-link a:hover {
-  color: #ddd;
+  color: #551A8B;         /* ホバー時紫 */
 }
