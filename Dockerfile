@@ -1,11 +1,8 @@
-# 軽量な nginx イメージを使用
 FROM nginx:alpine
 
-# HTML ファイルを nginx の公開ディレクトリにコピー
+# HTML と CSS をコピー
 COPY index.html /usr/share/nginx/html/index.html
+COPY style.css /usr/share/nginx/html/style.css
 
-# 80番ポートを開放
 EXPOSE 80
-
-# nginx をフォアグラウンドで起動
 CMD ["nginx", "-g", "daemon off;"]
