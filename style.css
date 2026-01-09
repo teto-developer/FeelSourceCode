@@ -1,12 +1,22 @@
 body {
   background-color: #000;  /* 背景黒 */
   color: #fff;             /* 文字白（デフォルト） */
-  font-size: 14px;          /* 文字大きめ */
+  font-size: 14px;
   line-height: 1.4;
   margin: 20px;
 }
 
-/* 英数字用 */
+pre {
+  background-color: #000;
+  color: #fff;
+  white-space: pre;
+  overflow-x: auto;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* 英語用 */
 .english {
   font-family: Helvetica, Arial, sans-serif; /* 1999年英語ブラウザ風 */
   color: #fff;
@@ -16,22 +26,6 @@ body {
 .japanese {
   font-family: "MS PGothic", "MS Gothic", Osaka; /* 1999年日本語ブラウザ風 */
   color: #fff;
-}
-
-/* コードブロック */
-pre {
-  background-color: #000;
-  color: #fff;
-  white-space: pre;
-  overflow-x: auto;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-/* コメント */
-.comment {
-  color: #fff;
-  margin-bottom: 5px;
 }
 
 /* GitHubリンク */
