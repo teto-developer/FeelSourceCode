@@ -1,24 +1,36 @@
-/* 全体 */
 body {
-  background-color: #000;   /* 背景黒 */
-  color: #fff;              /* 文字白 */
-  font-family: monospace;   /* モノスペース */
+  background-color: #000;
+  color: #fff;
+  font-family: monospace;
   padding: 20px;
   line-height: 1.5;
 }
 
-/* コードブロック */
 pre {
-  background-color: #000;   /* 背景黒 */
-  color: #fff;              /* 文字白 */
+  background-color: #000;
+  color: #fff;
   padding: 10px;
-  border: none;             /* 境界線なし */
-  white-space: pre;         /* 改行保持 */
-  overflow-x: auto;         /* 横スクロール可能 */
+  border: none;
+  white-space: pre;
+  overflow-x: auto;
 }
 
-/* コメント風 */
 .comment {
-  color: #fff;              /* 白文字 */
+  color: #fff;
   margin-bottom: 5px;
+}
+
+/* GitHubリンク用 */
+.github-link {
+  margin-top: 20px;
+}
+
+.github-link a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.github-link a:hover {
+  color: #ddd;
 }
