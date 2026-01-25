@@ -6,57 +6,80 @@
 <title>Suwakkoitiba_Sourcecode</title>
 
 <style>
-/* 全体の文字を p.p1 相当に */
-body {
-  margin: 0.0px;
+p.p1 {
+  margin: 0.0px 0.0px 0.0px 0.0px;
   font: 12.0px Helvetica;
   color: #000000;
-  background-color: #ffffff;
 }
 
-/* pre も同じ文字CSSにする */
-pre {
-  margin: 0.0px;
-  font: 12.0px Helvetica;
-  color: #000000;
-  white-space: pre;
-}
-
-/* span.s1 相当 */
-span {
+span.s1 {
   font-family: 'Helvetica';
   font-weight: normal;
   font-style: normal;
   font-size: 12.00px;
-}
-
-/* GitHubリンク（最低限） */
-.github-link {
-  margin-top: 10px;
-}
-
-.github-link a {
-  color: #000000;
-  text-decoration: underline;
 }
 </style>
 </head>
 
 <body>
 
-<pre id="code-block"></pre>
+<pre id="code-block">読み込み中…</pre>
 
 <div class="github-link">
   <a href="https://github.com/Ryouse1/Suwakkoitiba" target="_blank">
-    ソースコード
+    ソースコード（GitHub）
   </a>
 </div>
 
 <script>
-const text = `p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000}
-span.s1 {font-family: 'Helvetica'; font-weight: normal; font-style: normal; font-size: 12.00px}`;
+async function loadCode() {
+  const cssText = `p.p1 {
+  margin: 0.0px 0.0px 0.0px 0.0px;
+  font: 12.0px Helvetica;
+  color: #000000;
+}
 
-document.getElementById("code-block").textContent = text;
+span.s1 {
+  font-family: 'Helvetica';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12.00px;
+}
+`;
+
+  const files = [
+    {
+      name: "index.html",
+      url: "https://raw.githubusercontent.com/Ryouse1/Suwakkoitiba/main/index.html"
+    },
+    {
+      name: "script.js",
+      url: "https://raw.githubusercontent.com/Ryouse1/Suwakkoitiba/main/script.js"
+    }
+  ];
+
+  let output = '';
+  output += '/* ===== CSS Render Test ===== */\n';
+  output += cssText + '\n';
+
+  for (const file of files) {
+    try {
+      const res = await fetch(file.url);
+      if (!res.ok) throw new Error(file.url);
+      const text = await res.text();
+
+      output += `/* ===== ${file.name} ===== */\n`;
+      output += text + '\n\n';
+    } catch (e) {
+      output += `/* 読み込みエラー: ${file.name} */\n`;
+      output += e.message + '\n\n';
+    }
+  }
+
+  document.getElementById("code-block").textContent = output;
+}
+
+loadCode();
 </script>
 
 </body>
