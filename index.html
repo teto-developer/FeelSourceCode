@@ -6,108 +6,57 @@
 <title>Suwakkoitiba_Sourcecode</title>
 
 <style>
-@font-face {
-  font-family: "PixelOperatorMono";
-  src: url("PixelOperatorMono.woff2") format("woff2"),
-       url("PixelOperatorMono.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
+/* 全体の文字を p.p1 相当に */
 body {
-  background-color: #000;
-  color: #fff;
-  font-family: "PixelOperatorMono", monospace;
-  font-size: 16px;
-  line-height: 1.3;
-  margin: 20px;
-}
-
-pre {
-  background: #000;
-  color: #fff;
-  font-family: "PixelOperatorMono", monospace;
-  font-size: 16px;
-  white-space: pre;
-  overflow-x: auto;
-  padding: 10px;
-}
-
-.github-link {
-  margin-top: 20px;
-}
-
-.github-link a {
-  color: #00aaff;
-  text-decoration: underline;
-}
-.github-link a:hover {
-  color: #55ccff;
-}
-</style>
-</head>
-
-<body>
-
-<pre id="code-block">読み込み中…</pre>
-
-<div class="github-link">
-  <a href="https://github.com/Ryouse1/Suwakkoitiba" target="_blank">
-    ソースコード（GitHub）
-  </a>
-</div>
-
-<script>
-async function loadCode() {
-  // 表示したいCSS（文字として）
-  const cssText = `p.p1 {
-  margin: 0.0px 0.0px 0.0px 0.0px;
+  margin: 0.0px;
   font: 12.0px Helvetica;
   color: #000000;
+  background-color: #ffffff;
 }
 
-span.s1 {
+/* pre も同じ文字CSSにする */
+pre {
+  margin: 0.0px;
+  font: 12.0px Helvetica;
+  color: #000000;
+  white-space: pre;
+}
+
+/* span.s1 相当 */
+span {
   font-family: 'Helvetica';
   font-weight: normal;
   font-style: normal;
   font-size: 12.00px;
 }
 
-`;
-
-  const files = [
-    {
-      name: "index.html",
-      url: "https://raw.githubusercontent.com/Ryouse1/Suwakkoitiba/main/index.html"
-    },
-    {
-      name: "script.js",
-      url: "https://raw.githubusercontent.com/Ryouse1/Suwakkoitiba/main/script.js"
-    }
-  ];
-
-  let output = '';
-  output += '/* ===== CSS Render Test ===== */\n';
-  output += cssText + '\n';
-
-  for (const file of files) {
-    try {
-      const res = await fetch(file.url);
-      if (!res.ok) throw new Error(file.url);
-      const text = await res.text();
-
-      output += `/* ===== ${file.name} ===== */\n`;
-      output += text + '\n\n';
-    } catch (e) {
-      output += `/* 読み込みエラー: ${file.name} */\n`;
-      output += e.message + '\n\n';
-    }
-  }
-
-  document.getElementById("code-block").textContent = output;
+/* GitHubリンク（最低限） */
+.github-link {
+  margin-top: 10px;
 }
 
-loadCode();
+.github-link a {
+  color: #000000;
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<pre id="code-block"></pre>
+
+<div class="github-link">
+  <a href="https://github.com/Ryouse1/Suwakkoitiba" target="_blank">
+    ソースコード
+  </a>
+</div>
+
+<script>
+const text = `p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000}
+span.s1 {font-family: 'Helvetica'; font-weight: normal; font-style: normal; font-size: 12.00px}`;
+
+document.getElementById("code-block").textContent = text;
 </script>
 
 </body>
