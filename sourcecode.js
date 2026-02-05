@@ -1,8 +1,8 @@
 (() => {
   // ===== body 初期化 =====
   document.body.style.margin = "0";
-  document.body.style.width = "200vw";
-  document.body.style.height = "200vh";
+  document.body.style.width = "100vw";
+  document.body.style.height = "100vh";
   document.body.style.background = "#1e1e1e";
   document.body.style.overflow = "hidden";
   document.body.style.fontFamily =
@@ -16,8 +16,8 @@
   editor.style.fontWeight = "200"; // 500〜700で好み調整
   editor.style.margin = "0";
   editor.style.padding = "16px";
-  editor.style.width = "200vw";      // ← 横もフル
-  editor.style.height = "200vh";     // ← 縦フル
+  editor.style.width = "100vw";      // ← 横もフル
+  editor.style.height = "100vh";     // ← 縦フル
   editor.style.color = "#ffffff";    // ← 完全な白
   editor.style.outline = "none";
   editor.style.whiteSpace = "pre";
