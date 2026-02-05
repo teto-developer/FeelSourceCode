@@ -1,5 +1,4 @@
 (() => {
-  // ===== body 初期化 =====
   document.body.style.margin = "0";
   document.body.style.width = "100vw";
   document.body.style.height = "100vh";
@@ -16,24 +15,24 @@
   editor.style.margin = "0";
   editor.style.padding = "16px";
   editor.style.width = "100%";
-  editor.style.minHeight = "100%";   // ← 高さを最低100%にしてスクロール可能
   editor.style.color = "#ffffff";
   editor.style.outline = "none";
-  editor.style.whiteSpace = "pre-wrap"; // 横折り返し
+  editor.style.whiteSpace = "pre-wrap";
   editor.style.wordBreak = "break-word";
   editor.style.lineHeight = "1.5";
   editor.style.boxSizing = "border-box";
   editor.style.fontSize = "13px";
-  editor.style.overflowY = "auto"; // 縦スクロール
 
-  // 初期テキスト
+  // 重要: スクロール用に高さと overflow 設定
+  editor.style.height = "100%";
+  editor.style.overflowY = "auto";
+
   editor.textContent =
 `// 自由に文字を書ける
 // これは JS だけで動くエディタ
 // 保存もUIもなし、打つだけ
 `;
 
-  // Tabキー対応
   editor.addEventListener("keydown", e => {
     if (e.key === "Tab") {
       e.preventDefault();
@@ -41,9 +40,6 @@
     }
   });
 
-  // editor を body に追加
   document.body.appendChild(editor);
-
-  // 自動フォーカス
   editor.focus();
 })();
