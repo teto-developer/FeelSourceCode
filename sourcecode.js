@@ -22,7 +22,7 @@
   editor.style.whiteSpace = "pre";
   editor.style.lineHeight = "1.5";
   editor.style.boxSizing = "border-box";
-  editor.style.fontSize = "13px";    // ← ソースビュー感（好みで調整）
+  editor.style.fontSize = "26px";    // ← ソースビュー感（好みで調整）
 
   // 初期テキスト
   editor.textContent =
