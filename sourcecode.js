@@ -13,6 +13,7 @@
   editor.contentEditable = "true";
   editor.spellcheck = false;
 
+  editor.style.fontWeight = "600"; // 500〜700で好み調整
   editor.style.margin = "0";
   editor.style.padding = "16px";
   editor.style.width = "200vw";      // ← 横もフル
