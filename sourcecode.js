@@ -23,7 +23,7 @@
   editor.style.wordBreak = "break-word";
   editor.style.lineHeight = "1.5";
   editor.style.boxSizing = "border-box";
-  editor.style.fontSize = "16px";
+  editor.style.fontSize = "14px";
   editor.style.overflowY = "auto"; // 縦スクロール
 
   // 初期テキスト
