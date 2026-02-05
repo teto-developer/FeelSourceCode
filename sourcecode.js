@@ -27,7 +27,7 @@
   editor.style.lineHeight = "1.5";
 
   // ★ size がちゃんと変わる
-  editor.style.fontSize = "20px";
+  editor.style.fontSize = "17px";
   editor.style.fontWeight = "200";
 
   // スクロール
