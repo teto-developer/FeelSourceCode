@@ -4,7 +4,7 @@
   document.body.style.width = "100vw";
   document.body.style.height = "100vh";
   document.body.style.background = "#1e1e1e";
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "auto";
   document.body.style.fontFamily =
     "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
 
@@ -23,7 +23,8 @@
   editor.style.whiteSpace = "pre";
   editor.style.lineHeight = "1.5";
   editor.style.boxSizing = "border-box";
-  editor.style.fontSize = "18px";    // ← ソースビュー感（好みで調整）
+  editor.style.fontSize = "18px";// ← ソースビュー感（好みで調整）
+  editor.style.overflow = "auto";
 
   // 初期テキスト
   editor.textContent =
