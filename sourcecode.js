@@ -15,17 +15,29 @@
   editor.style.margin = "0";
   editor.style.padding = "16px";
   editor.style.width = "100%";
+  editor.style.height = "100%";
   editor.style.color = "#ffffff";
   editor.style.outline = "none";
   editor.style.whiteSpace = "pre-wrap";
   editor.style.wordBreak = "break-word";
   editor.style.lineHeight = "1.5";
   editor.style.boxSizing = "border-box";
-  editor.style.fontSize = "13px";
-
-  // 重要: スクロール用に高さと overflow 設定
-  editor.style.height = "100%";
   editor.style.overflowY = "auto";
+
+  // ===== 画面サイズに応じてフォント調整 =====
+  function resizeEditor() {
+    const w = window.innerWidth;
+
+    // 文字サイズを画面幅ベースで計算（スマホでも読みやすく）
+    let fontSize = Math.max(12, Math.min(18, w / 80));
+    editor.style.fontSize = fontSize + "px";
+
+    // 行の横幅を安定させるために maxWidth を設定
+    editor.style.maxWidth = "100vw";
+  }
+
+  window.addEventListener("resize", resizeEditor);
+  resizeEditor();
 
   editor.textContent =
 `// 自由に文字を書ける
