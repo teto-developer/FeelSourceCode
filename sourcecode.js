@@ -4,50 +4,35 @@
   document.body.style.height = "100vh";
   document.body.style.background = "#1e1e1e";
   document.body.style.overflow = "hidden";
+  document.body.style.fontFamily =
+    "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
 
   // ===== エディタ =====
   const editor = document.createElement("pre");
   editor.contentEditable = "true";
   editor.spellcheck = false;
 
-  Object.assign(editor.style, {
-    margin: "0",
-    padding: "16px",
-    width: "100%",
-    height: "100%",
-    color: "#ffffff",
-    outline: "none",
-    boxSizing: "border-box",
-    whiteSpace: "pre-wrap",
-    wordBreak: "break-word",
-    overflowY: "auto",
+  editor.style.margin = "0";
+  editor.style.padding = "16px";
+  editor.style.width = "100%";
+  editor.style.color = "#ffffff";
+  editor.style.outline = "none";
+  editor.style.whiteSpace = "pre-wrap";
+  editor.style.wordBreak = "break-word";
+  editor.style.lineHeight = "1.5";
+  editor.style.boxSizing = "border-box";
+  editor.style.fontSize = "13px";
 
-    fontFamily:
-      "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
-  });
+  // 重要: スクロール用に高さと overflow 設定
+  editor.style.height = "100%";
+  editor.style.overflowY = "auto";
 
-  // ===== 文字サイズを画面サイズに合わせる =====
-  function resizeEditor() {
-    const w = window.innerWidth;
-
-    // スマホでもPCでも自然なサイズ
-    const fontSize = Math.max(12, Math.min(18, w / 75));
-    editor.style.fontSize = fontSize + "px";
-
-    // 横幅制限（読みやすさ重視）
-    editor.style.maxWidth = "100vw";
-  }
-
-  window.addEventListener("resize", resizeEditor);
-  resizeEditor();
-
-  // ===== 初期テキスト =====
-  editor.textContent = `// Code Editor
-// Type freely
-// Supports mobile resize
+  editor.textContent =
+`// 自由に文字を書ける
+// これは JS だけで動くエディタ
+// 保存もUIもなし、打つだけ
 `;
 
-  // ===== Tab入力対応 =====
   editor.addEventListener("keydown", e => {
     if (e.key === "Tab") {
       e.preventDefault();
@@ -58,3 +43,5 @@
   document.body.appendChild(editor);
   editor.focus();
 })();
+
+これをソースコード文字の幅と長さ、そして、スマホによっても幅と長さが変わるようにして欲しい
