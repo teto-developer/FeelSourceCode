@@ -43,5 +43,3 @@
   document.body.appendChild(editor);
   editor.focus();
 })();
-
-これをソースコード文字の幅と長さ、そして、スマホによっても幅と長さが変わるようにして欲しい
