@@ -34,11 +34,18 @@
 `;
 
   editor.addEventListener("keydown", e => {
-    if (e.key === "Tab") {
-      e.preventDefault();
-      document.execCommand("insertText", false, "  ");
-    }
-  });
+  if (e.key === "Tab") {
+    e.preventDefault();
+    document.execCommand("insertText", false, "  ");
+  }
+});
+
+// ★ペースト時に色などを削除
+editor.addEventListener("paste", e => {
+  e.preventDefault();
+  const text = e.clipboardData.getData("text/plain");
+  document.execCommand("insertText", false, text);
+});
 
   document.body.appendChild(editor);
   editor.focus();
